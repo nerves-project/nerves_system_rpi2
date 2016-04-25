@@ -1,6 +1,6 @@
 # NervesSystemRpi2
 
-**TODO: Add description**
+[![Build Status](https://travis-ci.org/nerves-project/nerves_system_rpi2.png?branch=master)](https://travis-ci.org/nerves-project/nerves_system_rpi2)
 
 ## Installation
 
@@ -17,4 +17,3 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         def application do
           [applications: [:nerves_system_rpi2]]
         end
-
