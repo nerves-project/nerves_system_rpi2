@@ -12,5 +12,8 @@ config :nerves_system_rpi2, :nerves_env,
     "https://github.com/nerves-project/nerves_system_rpi2/releases/download/v#{version}/nerves_system_rpi2-v#{version}.tar.gz"],
   build_platform: Nerves.System.Platforms.BR,
   build_config: [
-    defconfig: "nerves_defconfig"
+    defconfig: "nerves_defconfig",
+    package_files: [
+      "rootfs-additions"
+    ]
   ]
