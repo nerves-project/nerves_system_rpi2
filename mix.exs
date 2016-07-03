@@ -20,9 +20,9 @@ defmodule NervesSystemRpi2.Mixfile do
   end
 
   defp deps do
-    [{:nerves_system, "~> 0.1.2"},
-     #{:nerves_system_br, github: "nerves-project/nerves_system_br"},
-     {:nerves_system_br, "~> 0.5.2"},
+    [{:nerves_system, "~> 0.1.4"},
+     #{:nerves_system_br, github: "nerves-project/nerves_system_br", ref: "6c6702ecfdea59bfb248ff4590cb0532419b5855"},
+     {:nerves_system_br, "~> 0.6.0"},
      {:nerves_toolchain_arm_unknown_linux_gnueabihf, "~> 0.6.0"}]
   end
 
@@ -34,9 +34,8 @@ defmodule NervesSystemRpi2.Mixfile do
 
   defp package do
     [maintainers: ["Frank Hunleth", "Justin Schneck"],
-     files: ["LICENSE", "mix.exs", "nerves_defconfig", "nerves.exs", "README.md", "VERSION"],
+     files: ["LICENSE", "mix.exs", "nerves_defconfig", "nerves.exs", "README.md", "VERSION", "rootfs-additions"],
      licenses: ["Apache 2.0"],
      links: %{"Github" => "https://github.com/nerves-project/nerves_system_rpi2"}]
   end
-
 end
