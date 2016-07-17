@@ -16,7 +16,7 @@ This is the base Nerves System configuration for the Raspberry Pi 2 Model B.
 | GPIO, I2C, SPI       | Yes - Elixir ALE                |
 | ADC                  | No                              |
 | PWM                  | Yes, but no Elixir support      |
-| UART                 | 1 available - ttyACM0           |
+| UART                 | 1 available - ttyAMA0           |
 | Camera               | Yes - via rpi-userland          |
 | Ethernet             | Yes                             |
 | WiFi                 | Requires USB WiFi dongle        |
