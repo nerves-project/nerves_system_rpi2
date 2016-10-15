@@ -9,10 +9,10 @@ defmodule NervesSystemRpi2.Mixfile do
     [app: :nerves_system_rpi2,
      version: @version,
      elixir: "~> 1.2",
-     compilers: Mix.compilers ++ [:nerves_system],
-     description: description,
-     package: package,
-     deps: deps]
+     compilers: Mix.compilers ++ [:nerves_package],
+     description: description(),
+     package: package(),
+     deps: deps()]
   end
 
   def application do
@@ -20,9 +20,14 @@ defmodule NervesSystemRpi2.Mixfile do
   end
 
   defp deps do
-    [{:nerves_system, "~> 0.1.5"},
-     {:nerves_system_br, "~> 0.7.0"},
-     {:nerves_toolchain_arm_unknown_linux_gnueabihf, "~> 0.7.0"}]
+    [{:nerves, github: "nerves-project/nerves"},
+     #{:nerves, path: "../nerves", override: true},
+     {:nerves_system_br, github: "nerves-project/nerves_system_br"},
+     #{:nerves_toolchain_arm_unknown_linux_gnueabihf, "~> 0.7.0"}]
+     {:nerves_toolchain_arm_unknown_linux_gnueabihf,
+       github: "nerves-project/toolchains",
+       branch: "pkg",
+       sparse: "nerves_toolchain_arm_unknown_linux_gnueabihf"}]
   end
 
   defp description do
