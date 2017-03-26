@@ -25,7 +25,8 @@ This is the base Nerves System configuration for the Raspberry Pi 2 Model B.
 ## Supported USB WiFi devices
 
 The base image includes drivers and firmware for Ralink RT53xx
-(`rt2800usb` driver) and RealTek RTL8712U (`r8712u` driver) devices.
+(`rt2800usb` driver), RealTek RTL8712U (`r8712u` driver) and
+RealTek RTL 8192 (`rtl8192cu` driver) devices (e.g. EDImax USB WiFi dongles).
 
 We are still working out which subset of all possible WiFi dongles to
 support in our images. At some point, we may have the option to support
