@@ -1,6 +1,10 @@
 # Changelog
 
-## v0.13.0-dev
+## v0.12.1
+
+  * New features
+    * 8192cu driver is enabled. This aligns this system with nerves_system_rpi
+      in terms of WiFi support.
 
 ## v0.12.0
 
