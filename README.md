@@ -62,33 +62,37 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 If you want to try your app using QEMU:
 
 1. Navigate to your nerves project directory.
-2. Using `fwup`, create an image file from a .fw file for use with `dd`:
+2. Follow [these](https://hexdocs.pm/nerves/faq.html#using-a-usb-serial-console) instructions to make `erlinit` launch the shell in your terminal. You should enable `-c ttyAMA0` instead of  `-c tty1` in `erlinit.config`.
+
+3. Using `fwup`, create an image file from a .fw file for use with `dd`:
 
   ```bash
+  mkdir -p _build/rpi2/dev/nerves/images/qemu
+
   fwup -a \
     -d _build/rpi2/dev/nerves/images/qemu/${PWD##*/}.img \
     -i _build/rpi2/dev/nerves/images/${PWD##*/}.fw \
     -t complete
   ```
 
-3. Using `unzip`, extract the kernel image, cmdline.txt and the .dtb from the .fw file:
+4. Using `unzip`, extract the kernel image, cmdline.txt and the .dtb from the .fw file:
 
   ```bash
   unzip _build/rpi2/dev/nerves/images/${PWD##*/}.fw \
     data/cmdline.txt data/zImage data/bcm2709-rpi-2-b.dtb \
     -d _build/rpi2/dev/nerves/images/qemu
   ```
-4. Execute QEMU:
+5. Execute QEMU:
   ```bash
   qemu-system-arm -M raspi2 -cpu arm1176 -smp 4 -m 512 \
     -kernel _build/rpi2/dev/nerves/images/qemu/data/zImage \
     -dtb _build/rpi2/dev/nerves/images/qemu/data/bcm2709-rpi-2-b.dtb \
     -drive file=_build/rpi2/dev/nerves/images/qemu/${PWD##*/}.img,if=sd,format=raw \
     -append "`cat _build/rpi2/dev/nerves/images/qemu/data/cmdline.txt`" \
-    -serial stdio \
+    -serial mon:stdio \
     -net none
   ```
 
 Notes:
   - Tested using version 2.9.0 of QEMU.
-  - Keyboard support is still missing (maybe configure erlinit with '-c ttyAMA0' and use the terminal instead?).
+  - Keyboard support is still missing; in the meantime, you have to modify your config.exs to make erlinit launch the shell in your terminal. Optionally, you may use the `-nographic` option of QEMU, but you'll have to use `kill -9` to manually kill the process instead of just closing the QEMU window.
