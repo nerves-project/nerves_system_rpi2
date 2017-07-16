@@ -4,7 +4,7 @@
 This is the base Nerves System configuration for the Raspberry Pi 2 Model B.
 
 ![Fritzing Raspberry Pi 2 image](assets/images/raspberry-pi-2-model-b.png)
-<br><sup>[Image credit](#fritzing)</sup>
+<br><sup>[Image credit](#fritzing): This image is from the [Fritzing](http://fritzing.org/home/) parts library.</sup>
 
 | Feature              | Description                     |
 | -------------------- | ------------------------------- |
@@ -55,4 +55,40 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
           [applications: [:nerves_system_rpi2]]
         end
 
-[Image credit](#fritzing): This image is from the [Fritzing](http://fritzing.org/home/) parts library.
+## Running on QEMU [WIP]
+
+![Running hello_nerves on QEMU.](assets/images/qemu-screenshot.png)
+
+If you want to try your app using QEMU:
+
+1. Navigate to your nerves project directory.
+2. Using `fwup`, create an image file from a .fw file for use with `dd`:
+
+  ```bash
+  fwup -a \
+    -d _build/rpi2/dev/nerves/images/qemu/${PWD##*/}.img \
+    -i _build/rpi2/dev/nerves/images/${PWD##*/}.fw \
+    -t complete
+  ```
+
+3. Using `unzip`, extract the kernel image, cmdline.txt and the .dtb from the .fw file:
+
+  ```bash
+  unzip _build/rpi2/dev/nerves/images/${PWD##*/}.fw \
+    data/cmdline.txt data/zImage data/bcm2709-rpi-2-b.dtb \
+    -d _build/rpi2/dev/nerves/images/qemu
+  ```
+4. Execute QEMU:
+  ```bash
+  qemu-system-arm -M raspi2 -cpu arm1176 -smp 4 -m 512 \
+    -kernel _build/rpi2/dev/nerves/images/qemu/data/zImage \
+    -dtb _build/rpi2/dev/nerves/images/qemu/data/bcm2709-rpi-2-b.dtb \
+    -drive file=_build/rpi2/dev/nerves/images/qemu/${PWD##*/}.img,if=sd,format=raw \
+    -append "`cat _build/rpi2/dev/nerves/images/qemu/data/cmdline.txt`" \
+    -serial stdio \
+    -net none
+  ```
+
+Notes:
+  - Tested using version 2.9.0 of QEMU.
+  - Keyboard support is still missing (maybe configure erlinit with '-c ttyAMA0' and use the terminal instead?).
