@@ -39,20 +39,4 @@ for your device. At a shell prompt, run `lsmod` to see which drivers are loaded.
 Running `dmesg` may also give a clue. When using `dmesg`, reinsert the USB
 dongle to generate new log messages if you don't see them.
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
-  1. Add nerves_system_rpi2 to your list of dependencies in `mix.exs`:
-
-        def deps do
-          [{:nerves_system_rpi2, "~> 0.11.0"}]
-        end
-
-  2. Ensure nerves_system_rpi2 is started before your application:
-
-        def application do
-          [applications: [:nerves_system_rpi2]]
-        end
-
 [Image credit](#fritzing): This image is from the [Fritzing](http://fritzing.org/home/) parts library.
