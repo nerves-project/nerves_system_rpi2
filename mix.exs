@@ -71,6 +71,7 @@ defmodule NervesSystemRpi2.Mixfile do
       "VERSION",
       "rootfs_overlay",
       "fwup.conf",
+      "fwup-revert.conf",
       "cmdline.txt",
       "linux-4.4.defconfig",
       "config.txt",
