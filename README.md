@@ -1,4 +1,5 @@
 # Raspberry Pi 2 Model B
+
 [![CircleCI](https://circleci.com/gh/nerves-project/nerves_system_rpi2.svg?style=svg)](https://circleci.com/gh/nerves-project/nerves_system_rpi2)
 
 This is the base Nerves System configuration for the Raspberry Pi 2 Model B.
