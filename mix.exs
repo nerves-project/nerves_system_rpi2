@@ -3,8 +3,8 @@ defmodule NervesSystemRpi2.Mixfile do
 
   @app :nerves_system_rpi2
   @version Path.join(__DIR__, "VERSION")
-    |> File.read!
-    |> String.trim
+           |> File.read!()
+           |> String.trim()
 
   def project do
     [
@@ -33,7 +33,7 @@ defmodule NervesSystemRpi2.Mixfile do
 
   defp nerves_package do
     [
-      type:  :system,
+      type: :system,
       artifact_sites: [
         {:github_releases, "nerves-project/#{@app}"}
       ],
