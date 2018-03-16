@@ -19,7 +19,6 @@ install_hex_rebar: &install_hex_rebar
   run:
     name: Install hex and rebar
     command: |
-      cd /tmp
       mix local.hex --force
       mix local.rebar --force
 
@@ -27,7 +26,6 @@ install_nerves_bootstrap: &install_nerves_bootstrap
   run:
     name: Install nerves_bootstrap
     command: |
-      cd /tmp
       mix archive.install hex nerves_bootstrap 1.0.0-rc.0 --force
 
 version: 2.0
