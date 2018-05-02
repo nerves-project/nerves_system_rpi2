@@ -26,7 +26,7 @@ This is the base Nerves System configuration for the Raspberry Pi 2 Model B.
 ## Using
 
 The most common way of using this Nerves System is create a project with `mix
-nerves.new` and to export `MIX_TARGET=rpi`. See the [Getting started
+nerves.new` and to export `MIX_TARGET=rpi2`. See the [Getting started
 guide](https://hexdocs.pm/nerves/getting-started.html#creating-a-new-nerves-app)
 for more information.
 
