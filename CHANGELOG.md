@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.2.1
+
+* Updated dependencies
+  * [nerves_system_br v1.3.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.3.2)
+* Enhancements
+  * Enable RTL8188EU driver
+
 ## v1.2.0
 
 This release updates Erlang to OTP 21.0
